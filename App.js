@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import LandingScreen from './screens/LandingScreen';
 import LoginInScreen from './screens/LoginInScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import Colors from './utils/Colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,14 +24,24 @@ export default function App() {
           name='Sign Up'
           component={SignUpScreen}
           options={{
-            title: 'Sign Up',
+            title: '',
+            headerStyle: {
+              backgroundColor: Colors.primary400,
+            },
+            headerShadowVisible: false,
+            headerBackTitleVisible: false,
           }}
         />
         <Stack.Screen
           name='Sign In'
           component={LoginInScreen}
           options={{
-            title: 'Sign In',
+            title: '',
+            headerStyle: {
+              backgroundColor: Colors.primary400,
+            },
+            headerShadowVisible: false,
+            headerBackTitleVisible: false,
           }}
         />
       </Stack.Navigator>

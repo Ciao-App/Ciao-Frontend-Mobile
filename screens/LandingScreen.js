@@ -1,4 +1,5 @@
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import PrimaryButton from '../components/ui/PrimaryButton';
 import Colors from '../utils/Colors';
 
 export default function LandingScreen() {
@@ -9,7 +10,11 @@ export default function LandingScreen() {
       style={styles.rootScreen}
       imageStyle={styles.backgroundImage}
     >
-      <Text style={styles.text}>Landing Screen </Text>
+      <Text style={styles.text}>Ciao!</Text>
+      <View style={styles.buttonView}>
+        <PrimaryButton>Sign In</PrimaryButton>
+        <PrimaryButton>Sign Up</PrimaryButton>
+      </View>
     </ImageBackground>
   );
 }
@@ -21,10 +26,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   backgroundImage: {
-    opacity: 0.99,
+    opacity: 0.95,
   },
   text: {
     color: Colors.primary100,
-    fontSize: 30,
+    fontSize: 60,
+    textAlign: 'center',
+    margin: 10,
+  },
+  buttonView: {
+    flexDirection: 'row',
   },
 });

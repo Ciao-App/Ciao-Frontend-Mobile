@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LandingScreen from './screens/LandingScreen';
-import LoginInScreen from './screens/LoginInScreen';
+import LoginInScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import Colors from './utils/Colors';
 
@@ -25,9 +25,7 @@ export default function App() {
           component={SignUpScreen}
           options={{
             title: '',
-            headerStyle: {
-              backgroundColor: Colors.primary400,
-            },
+            headerTransparent: true,
             headerShadowVisible: false,
             headerBackTitleVisible: false,
           }}
@@ -37,9 +35,7 @@ export default function App() {
           component={LoginInScreen}
           options={{
             title: '',
-            headerStyle: {
-              backgroundColor: Colors.primary400,
-            },
+            headerTransparent: true,
             headerShadowVisible: false,
             headerBackTitleVisible: false,
           }}

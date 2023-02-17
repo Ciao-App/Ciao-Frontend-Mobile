@@ -1,11 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import { ImageBackground } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import Colors from '../utils/Colors';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
-import Colors from '../utils/Colors';
+import { useNavigation } from '@react-navigation/native';
 
-export default function SignUpScreen() {
+export default function LoginInScreen() {
   const navigation = useNavigation();
   return (
     <ImageBackground
@@ -16,16 +15,14 @@ export default function SignUpScreen() {
     >
       <View style={styles.formContainer}>
         <Input label='Email Address' />
-        <Input label='First Name' />
-        <Input label='Last Name' />
         <Input label='Password' />
         <View>
-          <SecondaryButton>Submit</SecondaryButton>
+          <SecondaryButton>Log In!</SecondaryButton>
         </View>
-        <Text style={styles.switchText}>Already have an account?</Text>
+        <Text style={styles.switchText}>New to Ciao?</Text>
         <View>
-          <SecondaryButton onPress={() => navigation.navigate('Sign In')}>
-            Login
+          <SecondaryButton onPress={() => navigation.navigate('Sign Up')}>
+            Sign up!
           </SecondaryButton>
         </View>
       </View>

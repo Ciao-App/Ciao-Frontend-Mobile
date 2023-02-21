@@ -1,5 +1,4 @@
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
-import Colors from '../utils/Colors';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
 import { useNavigation } from '@react-navigation/native';
@@ -21,7 +20,7 @@ export default function LoginInScreen() {
         </View>
         <Text style={styles.switchText}>New to Ciao?</Text>
         <View>
-          <SecondaryButton onPress={() => navigation.navigate('Sign Up')}>
+          <SecondaryButton onPress={() => navigation.replace('Sign Up')}>
             Sign up!
           </SecondaryButton>
         </View>

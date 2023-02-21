@@ -3,9 +3,31 @@ import { ImageBackground } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
-import Colors from '../utils/Colors';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  onBodyChangeEmail,
+  onBodyChangeFirstName,
+  onBodyChangeLastName,
+  onBodyChangePassword,
+} from '../redux/userSlice';
 
 export default function SignUpScreen() {
+  const { email, firstName, lastName, password } = useSelector(
+    (state) => state.user
+  );
+  const dispatch = useDispatch();
+
+  function submitHandler() {
+    const newUser = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+    };
+    console.log(newUser);
+    return newUser;
+  }
+
   const navigation = useNavigation();
   return (
     <ImageBackground
@@ -15,16 +37,33 @@ export default function SignUpScreen() {
       imageStyle={styles.backgroundImage}
     >
       <View style={styles.formContainer}>
-        <Input label='Email Address' />
-        <Input label='First Name' />
-        <Input label='Last Name' />
-        <Input label='Password' />
+        <Input
+          label='Email Address'
+          onChangeText={(text) => dispatch(onBodyChangeEmail(text))}
+          value={email}
+        />
+        <Input
+          label='First Name'
+          onChangeText={(text) => dispatch(onBodyChangeFirstName(text))}
+          value={firstName}
+        />
+        <Input
+          label='Last Name'
+          onChangeText={(text) => dispatch(onBodyChangeLastName(text))}
+          value={lastName}
+        />
+        <Input
+          label='Password'
+          onChangeText={(text) => dispatch(onBodyChangePassword(text))}
+          value={password}
+          secure
+        />
         <View>
-          <SecondaryButton>Submit</SecondaryButton>
+          <SecondaryButton onPress={submitHandler}>Submit</SecondaryButton>
         </View>
         <Text style={styles.switchText}>Already have an account?</Text>
         <View>
-          <SecondaryButton onPress={() => navigation.navigate('Sign In')}>
+          <SecondaryButton onPress={() => navigation.replace('Sign In')}>
             Login
           </SecondaryButton>
         </View>

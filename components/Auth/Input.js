@@ -5,9 +5,9 @@ function Input({
   label,
   keyboardType,
   secure,
-  onUpdateValue,
   value,
   isInvalid,
+  onChangeText,
 }) {
   return (
     <View style={styles.inputContainer}>
@@ -17,11 +17,10 @@ function Input({
       <TextInput
         style={[styles.input, isInvalid && styles.inputInvalid]}
         autoCapitalize={false}
-        // autoCapitalize="none"
         keyboardType={keyboardType}
         secureTextEntry={secure}
-        onChangeText={onUpdateValue}
         value={value}
+        onChangeText={onChangeText}
       />
     </View>
   );

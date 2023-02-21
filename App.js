@@ -9,6 +9,9 @@ import Colors from './utils/Colors';
 
 const Stack = createNativeStackNavigator();
 
+//* once auth is set up, need to implement conditional statements where it checks if user has a saved profile on the phone
+//* if so, then app should render out the home screen as default
+
 export default function App() {
   return (
     <NavigationContainer>

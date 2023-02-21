@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     borderRadius: 15,
-    backgroundColor: 'rgba(221,221,221, 0.7)',
+    backgroundColor: 'rgba(221,221,221, 0.5)',
     padding: 30,
     width: '90%',
   },

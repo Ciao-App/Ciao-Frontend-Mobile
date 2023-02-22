@@ -10,6 +10,7 @@ import {
   onBodyChangeLastName,
   onBodyChangePassword,
 } from '../redux/userSlice';
+import { signUpUser } from '../components/Auth/Services/client';
 
 export default function SignUpScreen() {
   const { email, firstName, lastName, password } = useSelector(
@@ -17,15 +18,20 @@ export default function SignUpScreen() {
   );
   const dispatch = useDispatch();
 
-  function submitHandler() {
+  async function submitHandler() {
     const newUser = {
       email: email,
       firstName: firstName,
       lastName: lastName,
       password: password,
     };
+    await signUpUser(newUser);
     console.log(newUser);
-    return newUser;
+    dispatch(onBodyChangeEmail(''));
+    dispatch(onBodyChangeFirstName(''));
+    dispatch(onBodyChangeLastName(''));
+    dispatch(onBodyChangePassword(''));
+    return;
   }
 
   const navigation = useNavigation();

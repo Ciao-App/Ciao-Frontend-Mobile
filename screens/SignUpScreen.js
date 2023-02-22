@@ -13,6 +13,7 @@ import {
 import { signUpUser } from '../components/Auth/Services/client';
 
 export default function SignUpScreen() {
+  const navigation = useNavigation();
   const { email, firstName, lastName, password } = useSelector(
     (state) => state.user
   );
@@ -26,15 +27,14 @@ export default function SignUpScreen() {
       password: password,
     };
     await signUpUser(newUser);
-    console.log(newUser);
     dispatch(onBodyChangeEmail(''));
     dispatch(onBodyChangeFirstName(''));
     dispatch(onBodyChangeLastName(''));
     dispatch(onBodyChangePassword(''));
+    navigation.replace('Home Screen');
     return;
   }
 
-  const navigation = useNavigation();
   return (
     <ImageBackground
       source={require('../assets/images/backgroundTwo.jpeg')}

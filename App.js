@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import HomeScreen from './screens/HomeScreen';
 
 import LandingScreen from './screens/LandingScreen';
 import LoginInScreen from './screens/LoginScreen';
@@ -40,6 +41,16 @@ export default function App() {
             <Stack.Screen
               name='Sign In'
               component={LoginInScreen}
+              options={{
+                title: '',
+                headerTransparent: true,
+                headerShadowVisible: false,
+                headerBackTitleVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name='Home Screen'
+              component={HomeScreen}
               options={{
                 title: '',
                 headerTransparent: true,

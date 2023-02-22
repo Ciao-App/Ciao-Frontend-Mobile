@@ -12,53 +12,45 @@ import SignUpScreen from './screens/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
 
-//* once auth is set up, need to implement conditional statements where it checks if user has a saved profile on the phone
-//* if so, then app should render out the home screen as default
+//* if user is authenticated then authenticated stack should be used, otherwise use auth stack
+function AuthStack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        title: '',
+        headerTransparent: true,
+        headerShadowVisible: false,
+        headerBackTitleVisible: false,
+      }}
+    >
+      <Stack.Screen
+        name='Landing Screen'
+        component={LandingScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen name='Sign Up' component={SignUpScreen} />
+      <Stack.Screen name='Sign In' component={LoginInScreen} />
+      <Stack.Screen name='Home Screen' component={HomeScreen} />
+    </Stack.Navigator>
+  );
+}
+
+function AuthenticatedStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name='Home Screen' component={HomeScreen} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <>
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name='Landing Screen'
-              component={LandingScreen}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name='Sign Up'
-              component={SignUpScreen}
-              options={{
-                title: '',
-                headerTransparent: true,
-                headerShadowVisible: false,
-                headerBackTitleVisible: false,
-              }}
-            />
-            <Stack.Screen
-              name='Sign In'
-              component={LoginInScreen}
-              options={{
-                title: '',
-                headerTransparent: true,
-                headerShadowVisible: false,
-                headerBackTitleVisible: false,
-              }}
-            />
-            <Stack.Screen
-              name='Home Screen'
-              component={HomeScreen}
-              options={{
-                title: '',
-                headerTransparent: true,
-                headerShadowVisible: false,
-                headerBackTitleVisible: false,
-              }}
-            />
-          </Stack.Navigator>
+          <AuthStack />
         </NavigationContainer>
       </Provider>
     </>

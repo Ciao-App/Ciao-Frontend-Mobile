@@ -19,6 +19,7 @@ export default function LoginInScreen() {
     await signInUser(User);
     dispatch(onBodyChangeEmail(''));
     dispatch(onBodyChangePassword(''));
+    //* need validation to make sure the user exists in the database before rerouting
     navigation.replace('Home Screen');
     return;
   }

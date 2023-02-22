@@ -2,9 +2,27 @@ import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { onBodyChangeEmail, onBodyChangePassword } from '../redux/userSlice';
+import { signInUser } from '../components/Auth/Services/client';
 
 export default function LoginInScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const { email, password } = useSelector((state) => state.user);
+
+  async function submitHandler() {
+    const User = {
+      email: email,
+      password: password,
+    };
+    await signInUser(User);
+    dispatch(onBodyChangeEmail(''));
+    dispatch(onBodyChangePassword(''));
+    navigation.replace('Home Screen');
+    return;
+  }
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundTwo.jpeg')}
@@ -13,10 +31,18 @@ export default function LoginInScreen() {
       imageStyle={styles.backgroundImage}
     >
       <View style={styles.formContainer}>
-        <Input label='Email Address' />
-        <Input label='Password' />
+        <Input
+          label='Email Address'
+          onChangeText={(text) => dispatch(onBodyChangeEmail(text))}
+          value={email}
+        />
+        <Input
+          label='Password'
+          onChangeText={(text) => dispatch(onBodyChangePassword(text))}
+          value={password}
+        />
         <View>
-          <SecondaryButton>Log In!</SecondaryButton>
+          <SecondaryButton onPress={submitHandler}>Log In!</SecondaryButton>
         </View>
         <Text style={styles.switchText}>New to Ciao?</Text>
         <View>

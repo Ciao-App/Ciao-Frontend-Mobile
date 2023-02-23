@@ -1,11 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider } from 'react-redux';
+import { Button, StyleSheet } from 'react-native';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import {
+  authenticateUser,
+  setUserAuthenticationToken,
+} from './redux/authSlice';
 import { store } from './redux/store';
-import HomeScreen from './screens/HomeScreen';
 
+import HomeScreen from './screens/HomeScreen';
 import LandingScreen from './screens/LandingScreen';
 import LoginInScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
@@ -13,6 +16,7 @@ import SignUpScreen from './screens/SignUpScreen';
 const Stack = createNativeStackNavigator();
 
 //* if user is authenticated then authenticated stack should be used, otherwise use auth stack
+//* if token is present then user is authenticated -> authenticated stack
 function AuthStack() {
   return (
     <Stack.Navigator
@@ -32,7 +36,6 @@ function AuthStack() {
       />
       <Stack.Screen name='Sign Up' component={SignUpScreen} />
       <Stack.Screen name='Sign In' component={LoginInScreen} />
-      <Stack.Screen name='Home Screen' component={HomeScreen} />
     </Stack.Navigator>
   );
 }
@@ -44,14 +47,25 @@ function AuthenticatedStack() {
     </Stack.Navigator>
   );
 }
+function Navigation() {
+  const { token } = useSelector((state) => state.auth);
+  console.log('app.js token', token);
+  return (
+    <NavigationContainer>
+      {!token && <AuthStack />}
+      {token && <AuthenticatedStack />}
+    </NavigationContainer>
+  );
+}
 
 export default function App() {
   return (
     <>
       <Provider store={store}>
-        <NavigationContainer>
-          <AuthStack />
-        </NavigationContainer>
+        {/* <NavigationContainer> */}
+        {/* <AuthStack /> */}
+        <Navigation />
+        {/* </NavigationContainer> */}
       </Provider>
     </>
   );

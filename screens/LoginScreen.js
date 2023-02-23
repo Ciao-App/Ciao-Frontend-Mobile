@@ -5,6 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { onBodyChangeEmail, onBodyChangePassword } from '../redux/userSlice';
 import { signInUser } from '../components/Auth/Services/client';
+import {
+  authenticateUser,
+  setUserAuthenticationToken,
+} from '../redux/authSlice';
 
 export default function LoginInScreen() {
   const navigation = useNavigation();
@@ -16,11 +20,18 @@ export default function LoginInScreen() {
       email: email,
       password: password,
     };
-    await signInUser(User);
+    const token = await signInUser(User);
+    console.log('token', token);
+
+    dispatch(setUserAuthenticationToken(token));
+    dispatch(authenticateUser(true));
+
     dispatch(onBodyChangeEmail(''));
     dispatch(onBodyChangePassword(''));
     //* need validation to make sure the user exists in the database before rerouting
-    navigation.replace('Home Screen');
+    //* if no token and user tries to log in, throw alert
+    // navigation.replace('Home Screen');
+
     return;
   }
 
@@ -41,6 +52,7 @@ export default function LoginInScreen() {
           label='Password'
           onChangeText={(text) => dispatch(onBodyChangePassword(text))}
           value={password}
+          secure
         />
         <View>
           <SecondaryButton onPress={submitHandler}>Log In!</SecondaryButton>

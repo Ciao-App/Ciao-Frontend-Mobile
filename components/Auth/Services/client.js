@@ -37,6 +37,8 @@ export async function signInUser(userData) {
   });
   return response.json();
 }
+
+// fetch to validate a user in fact was getting logged in
 export async function getUser() {
   const url = 'http://192.168.86.33:7890/api/v1/users/me';
   const response = await fetch(url, {

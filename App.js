@@ -47,7 +47,6 @@ function AuthenticatedStack() {
     dispatch(setUserAuthenticationToken(''));
     dispatch(authenticateUser(false));
   }
-
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -60,6 +59,7 @@ function AuthenticatedStack() {
     </Stack.Navigator>
   );
 }
+
 function Navigation() {
   const { token } = useSelector((state) => state.auth);
   console.log('app.js token', token);
@@ -80,9 +80,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

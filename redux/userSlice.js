@@ -23,11 +23,11 @@ export const userSlice = createSlice({
     onBodyChangePassword: (state, action) => {
       state.password = action.payload;
     },
-    clearUserInputFields: (
-      { email, firstName, lastName, password },
-      action
-    ) => {
-      email, firstName, lastName, (password = action.payload);
+    clearUserInputFields: (state, action) => {
+      state.email = action.payload;
+      state.firstName = action.payload;
+      state.lastName = action.payload;
+      state.password = action.payload;
     },
   },
 });

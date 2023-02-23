@@ -5,12 +5,17 @@ import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  clearUserInputFields,
   onBodyChangeEmail,
   onBodyChangeFirstName,
   onBodyChangeLastName,
   onBodyChangePassword,
 } from '../redux/userSlice';
-import { signUpUser } from '../components/Auth/Services/client';
+import { signInUser, signUpUser } from '../components/Auth/Services/client';
+import {
+  authenticateUser,
+  setUserAuthenticationToken,
+} from '../redux/authSlice';
 
 export default function SignUpScreen() {
   const navigation = useNavigation();
@@ -27,11 +32,11 @@ export default function SignUpScreen() {
       password: password,
     };
     await signUpUser(newUser);
-    dispatch(onBodyChangeEmail(''));
-    dispatch(onBodyChangeFirstName(''));
-    dispatch(onBodyChangeLastName(''));
-    dispatch(onBodyChangePassword(''));
-    navigation.replace('Home Screen');
+    const token = await signInUser(newUser);
+    dispatch(setUserAuthenticationToken(token));
+    dispatch(authenticateUser(true));
+    dispatch(clearUserInputFields(''));
+
     return;
   }
 

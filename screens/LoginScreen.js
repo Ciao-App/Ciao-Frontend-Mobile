@@ -30,7 +30,6 @@ export default function LoginInScreen() {
     dispatch(onBodyChangePassword(''));
     //* need validation to make sure the user exists in the database before rerouting
     //* if no token and user tries to log in, throw alert
-    // navigation.replace('Home Screen');
 
     return;
   }

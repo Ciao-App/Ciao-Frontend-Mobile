@@ -41,9 +41,22 @@ function AuthStack() {
 }
 
 function AuthenticatedStack() {
+  const dispatch = useDispatch();
+  function logout() {
+    console.log('logging out');
+    dispatch(setUserAuthenticationToken(''));
+    dispatch(authenticateUser(false));
+  }
+
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Home Screen' component={HomeScreen} />
+      <Stack.Screen
+        name='Home Screen'
+        component={HomeScreen}
+        options={() => ({
+          headerLeft: () => <Button title='logout' onPress={logout} />,
+        })}
+      />
     </Stack.Navigator>
   );
 }
@@ -62,10 +75,7 @@ export default function App() {
   return (
     <>
       <Provider store={store}>
-        {/* <NavigationContainer> */}
-        {/* <AuthStack /> */}
         <Navigation />
-        {/* </NavigationContainer> */}
       </Provider>
     </>
   );

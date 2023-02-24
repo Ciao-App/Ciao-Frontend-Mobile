@@ -1,10 +1,14 @@
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { onBodyChangeEmail, onBodyChangePassword } from '../redux/userSlice';
-import { signInUser } from '../components/Auth/Services/client';
+import {
+  clearUserInputFields,
+  onBodyChangeEmail,
+  onBodyChangePassword,
+} from '../redux/userSlice';
+import { getUser, signInUser } from '../components/Auth/Services/client';
 import {
   authenticateUser,
   setUserAuthenticationToken,
@@ -20,18 +24,20 @@ export default function LoginInScreen() {
       email: email,
       password: password,
     };
-    const token = await signInUser(User);
-    console.log('token', token);
-
-    dispatch(setUserAuthenticationToken(token));
-    dispatch(authenticateUser(true));
-
-    dispatch(onBodyChangeEmail(''));
-    dispatch(onBodyChangePassword(''));
+    try {
+      const token = await signInUser(User);
+      const userAccess = await getUser();
+      console.log('current user', userAccess);
+      dispatch(setUserAuthenticationToken(token));
+      dispatch(authenticateUser(true));
+      dispatch(clearUserInputFields(''));
+      return;
+    } catch (error) {
+      dispatch(clearUserInputFields(''));
+      Alert.alert(error.message);
+    }
     //* need validation to make sure the user exists in the database before rerouting
     //* if no token and user tries to log in, throw alert
-
-    return;
   }
 
   return (

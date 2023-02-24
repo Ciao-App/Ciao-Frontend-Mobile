@@ -1,4 +1,3 @@
-// slice - for defining state, data, and actions to change data
 import { createSlice } from '@reduxjs/toolkit';
 
 export const userSlice = createSlice({

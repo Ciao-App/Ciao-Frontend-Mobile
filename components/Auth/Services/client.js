@@ -27,6 +27,8 @@ export async function signInUser(userData) {
     },
     body: JSON.stringify(userData),
   });
+
+  if (!response.ok) throw new Error('sign in failed');
   return response.json();
 }
 
@@ -35,6 +37,21 @@ export async function getUser() {
   const url = 'http://192.168.86.33:7890/api/v1/users/me';
   const response = await fetch(url, {
     method: 'GET',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(),
+  });
+  return response.json();
+}
+
+export async function logoutUser() {
+  const url = 'http://192.168.86.33:7890/api/v1/users/me';
+  const response = await fetch(url, {
+    method: 'DELETE',
     mode: 'cors',
     cache: 'no-cache',
     credentials: 'include',

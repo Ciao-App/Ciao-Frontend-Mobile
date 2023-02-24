@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, StyleSheet } from 'react-native';
+import { Button } from 'react-native';
 import { Provider, useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from './components/Auth/Services/client';
 import {
   authenticateUser,
   setUserAuthenticationToken,
@@ -42,7 +43,8 @@ function AuthStack() {
 
 function AuthenticatedStack() {
   const dispatch = useDispatch();
-  function logout() {
+  async function logout() {
+    await logoutUser();
     console.log('logging out');
     dispatch(setUserAuthenticationToken(''));
     dispatch(authenticateUser(false));

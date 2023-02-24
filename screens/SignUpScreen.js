@@ -32,7 +32,10 @@ export default function SignUpScreen() {
       password: password,
     };
     await signUpUser(newUser);
-    const token = await signInUser(newUser);
+    const token = await signInUser({
+      email: newUser.email,
+      password: newUser.password,
+    });
     dispatch(setUserAuthenticationToken(token));
     dispatch(authenticateUser(true));
     dispatch(clearUserInputFields(''));

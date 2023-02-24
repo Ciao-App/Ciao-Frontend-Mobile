@@ -49,16 +49,10 @@ export async function getUser() {
 }
 
 export async function logoutUser() {
-  const url = 'http://192.168.86.33:7890/api/v1/users/me';
+  const url = 'http://192.168.86.33:7890/api/v1/users/sessions';
   const response = await fetch(url, {
     method: 'DELETE',
-    mode: 'cors',
-    cache: 'no-cache',
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(),
   });
-  return response.json();
+  return response;
 }

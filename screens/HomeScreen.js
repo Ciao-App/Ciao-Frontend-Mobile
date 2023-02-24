@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-import { getUser } from '../components/Auth/Services/client';
 
 export default function HomeScreen() {
   const { user } = useSelector((state) => state.auth);

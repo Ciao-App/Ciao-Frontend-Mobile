@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { ImageBackground } from 'react-native';
+import { Alert, ImageBackground } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
@@ -30,23 +30,34 @@ export default function SignUpScreen() {
   const dispatch = useDispatch();
 
   async function submitHandler() {
-    const newUser = {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-    };
-    await signUpUser(newUser);
-    const token = await signInUser({
-      email: newUser.email,
-      password: newUser.password,
-    });
-    dispatch(setAuthenticatedUser(await getUser()));
-    dispatch(setUserAuthenticationToken(token));
-    dispatch(authenticateUser(true));
-    dispatch(clearUserInputFields(''));
+    const validEmail = email.includes('@');
+    const validPassword = password.length >= 6;
 
-    return;
+    if (!validEmail) {
+      Alert.alert('Invalid email. Please input a valid email address');
+    } else if (!validPassword) {
+      Alert.alert(
+        'Passwords must be at least 6 characters long. Please enter a valid password'
+      );
+    } else {
+      const newUser = {
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        password: password,
+      };
+      await signUpUser(newUser);
+      const token = await signInUser({
+        email: newUser.email,
+        password: newUser.password,
+      });
+      dispatch(setAuthenticatedUser(await getUser()));
+      dispatch(setUserAuthenticationToken(token));
+      dispatch(authenticateUser(true));
+      dispatch(clearUserInputFields(''));
+
+      return;
+    }
   }
 
   return (

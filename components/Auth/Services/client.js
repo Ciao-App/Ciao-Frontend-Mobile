@@ -28,7 +28,8 @@ export async function signInUser(userData) {
     body: JSON.stringify(userData),
   });
 
-  if (!response.ok) throw new Error('sign in failed');
+  if (!response.ok)
+    throw new Error('Sign in failed. Please check your credentials');
   return response.json();
 }
 

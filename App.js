@@ -45,7 +45,6 @@ function AuthenticatedStack() {
   const dispatch = useDispatch();
   async function logout() {
     await logoutUser();
-    console.log('logging out');
     dispatch(setUserAuthenticationToken(''));
     dispatch(authenticateUser(false));
   }

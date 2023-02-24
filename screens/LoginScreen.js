@@ -11,6 +11,7 @@ import {
 import { getUser, signInUser } from '../components/Auth/Services/client';
 import {
   authenticateUser,
+  setAuthenticatedUser,
   setUserAuthenticationToken,
 } from '../redux/authSlice';
 
@@ -26,8 +27,7 @@ export default function LoginInScreen() {
     };
     try {
       const token = await signInUser(User);
-      const userAccess = await getUser();
-      console.log('current user', userAccess);
+      dispatch(setAuthenticatedUser(await getUser()));
       dispatch(setUserAuthenticationToken(token));
       dispatch(authenticateUser(true));
       dispatch(clearUserInputFields(''));

@@ -11,9 +11,14 @@ import {
   onBodyChangeLastName,
   onBodyChangePassword,
 } from '../redux/userSlice';
-import { signInUser, signUpUser } from '../components/Auth/Services/client';
+import {
+  getUser,
+  signInUser,
+  signUpUser,
+} from '../components/Auth/Services/client';
 import {
   authenticateUser,
+  setAuthenticatedUser,
   setUserAuthenticationToken,
 } from '../redux/authSlice';
 
@@ -36,6 +41,7 @@ export default function SignUpScreen() {
       email: newUser.email,
       password: newUser.password,
     });
+    dispatch(setAuthenticatedUser(await getUser()));
     dispatch(setUserAuthenticationToken(token));
     dispatch(authenticateUser(true));
     dispatch(clearUserInputFields(''));

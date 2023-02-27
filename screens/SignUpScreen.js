@@ -16,11 +16,7 @@ import {
   signInUser,
   signUpUser,
 } from '../components/Auth/Services/client';
-import {
-  authenticateUser,
-  setAuthenticatedUser,
-  setUserAuthenticationToken,
-} from '../redux/authSlice';
+import { setAuthenticatedUser } from '../redux/authSlice';
 
 export default function SignUpScreen() {
   const navigation = useNavigation();
@@ -58,9 +54,6 @@ export default function SignUpScreen() {
           authenticated: true,
         })
       );
-      // dispatch(setAuthenticatedUser(await getUser()));
-      // dispatch(setUserAuthenticationToken(token));
-      // dispatch(authenticateUser(true));
       dispatch(clearUserInputFields(''));
 
       return;

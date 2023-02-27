@@ -3,21 +3,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from 'react-native';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from './components/Auth/Services/client';
-import {
-  authenticateUser,
-  setUserAuthenticationToken,
-} from './redux/authSlice';
+import { logoutAuthenticatedUser } from './redux/authSlice';
 import { store } from './redux/store';
 
-import HomeScreen from './screens/HomeScreen';
-import LandingScreen from './screens/LandingScreen';
-import LoginInScreen from './screens/LoginScreen';
-import SignUpScreen from './screens/SignUpScreen';
+import {
+  HomeScreen,
+  LandingScreen,
+  LoginInScreen,
+  SignUpScreen,
+} from './screens';
 
 const Stack = createNativeStackNavigator();
 
-//* if user is authenticated then authenticated stack should be used, otherwise use auth stack
-//* if token is present then user is authenticated -> authenticated stack
+/* if user is authenticated then authenticated stack should be used, otherwise use auth stack
+if token is present then user is authenticated -> authenticated stack */
+
 function AuthStack() {
   return (
     <Stack.Navigator
@@ -45,8 +45,13 @@ function AuthenticatedStack() {
   const dispatch = useDispatch();
   async function logout() {
     await logoutUser();
-    dispatch(setUserAuthenticationToken(''));
-    dispatch(authenticateUser(false));
+    dispatch(
+      logoutAuthenticatedUser({
+        user: {},
+        token: '',
+        authenticated: false,
+      })
+    );
   }
   return (
     <Stack.Navigator>

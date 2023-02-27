@@ -51,9 +51,16 @@ export default function SignUpScreen() {
         email: newUser.email,
         password: newUser.password,
       });
-      dispatch(setAuthenticatedUser(await getUser()));
-      dispatch(setUserAuthenticationToken(token));
-      dispatch(authenticateUser(true));
+      dispatch(
+        setAuthenticatedUser({
+          user: await getUser(),
+          token: token,
+          authenticated: true,
+        })
+      );
+      // dispatch(setAuthenticatedUser(await getUser()));
+      // dispatch(setUserAuthenticationToken(token));
+      // dispatch(authenticateUser(true));
       dispatch(clearUserInputFields(''));
 
       return;

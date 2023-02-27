@@ -9,11 +9,7 @@ import {
   onBodyChangePassword,
 } from '../redux/userSlice';
 import { getUser, signInUser } from '../components/Auth/Services/client';
-import {
-  authenticateUser,
-  setAuthenticatedUser,
-  setUserAuthenticationToken,
-} from '../redux/authSlice';
+import { setAuthenticatedUser } from '../redux/authSlice';
 
 export default function LoginInScreen() {
   const navigation = useNavigation();
@@ -27,17 +23,20 @@ export default function LoginInScreen() {
     };
     try {
       const token = await signInUser(User);
-      dispatch(setAuthenticatedUser(await getUser()));
-      dispatch(setUserAuthenticationToken(token));
-      dispatch(authenticateUser(true));
+      dispatch(
+        setAuthenticatedUser({
+          user: await getUser(),
+          token: token,
+          authenticated: true,
+        })
+      );
       dispatch(clearUserInputFields(''));
       return;
     } catch (error) {
       dispatch(clearUserInputFields(''));
       Alert.alert(error.message);
     }
-    //* need validation to make sure the user exists in the database before rerouting
-    //* if no token and user tries to log in, throw alert
+    //* need validation to make sure the user exists in the database before rerouting - if no token and user tries to log in, throw alert
   }
 
   return (

@@ -1,10 +1,44 @@
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import Input from '../components/Auth/Input';
 import SecondaryButton from '../components/ui/SecondaryButton';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  clearUserInputFields,
+  onBodyChangeEmail,
+  onBodyChangePassword,
+} from '../redux/userSlice';
+import { getUser, signInUser } from '../components/Auth/Services/client';
+import { setAuthenticatedUser } from '../redux/authSlice';
 
 export default function LoginInScreen() {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const { email, password } = useSelector((state) => state.user);
+
+  async function submitHandler() {
+    const User = {
+      email: email,
+      password: password,
+    };
+    try {
+      const token = await signInUser(User);
+      dispatch(
+        setAuthenticatedUser({
+          user: await getUser(),
+          token: token,
+          authenticated: true,
+        })
+      );
+      dispatch(clearUserInputFields(''));
+      return;
+    } catch (error) {
+      dispatch(clearUserInputFields(''));
+      Alert.alert(error.message);
+    }
+    //* need validation to make sure the user exists in the database before rerouting - if no token and user tries to log in, throw alert
+  }
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundTwo.jpeg')}
@@ -13,10 +47,19 @@ export default function LoginInScreen() {
       imageStyle={styles.backgroundImage}
     >
       <View style={styles.formContainer}>
-        <Input label='Email Address' />
-        <Input label='Password' />
+        <Input
+          label='Email Address'
+          onChangeText={(text) => dispatch(onBodyChangeEmail(text))}
+          value={email}
+        />
+        <Input
+          label='Password'
+          onChangeText={(text) => dispatch(onBodyChangePassword(text))}
+          value={password}
+          secure
+        />
         <View>
-          <SecondaryButton>Log In!</SecondaryButton>
+          <SecondaryButton onPress={submitHandler}>Log In!</SecondaryButton>
         </View>
         <Text style={styles.switchText}>New to Ciao?</Text>
         <View>

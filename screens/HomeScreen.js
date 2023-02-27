@@ -1,22 +1,60 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import {
+  FeedScreen,
+  FavoritesScreen,
+  ExploreScreen,
+  NotificationScreen,
+  ProfileScreen,
+} from './index';
 
 export default function HomeScreen() {
-  const { user } = useSelector((state) => state.auth);
-  console.log('homepage - current user', user);
+  const Tab = createBottomTabNavigator();
 
   return (
-    <View style={styles.rootContainer}>
-      <Text>Home Screen</Text>
-    </View>
+    <>
+      <Tab.Navigator>
+        <Tab.Screen
+          name='Feed'
+          component={FeedScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+          }}
+        />
+        <Tab.Screen
+          name='Favorites'
+          component={FavoritesScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+          }}
+        />
+        <Tab.Screen
+          name='Explore'
+          component={ExploreScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+          }}
+        />
+        <Tab.Screen
+          name='Notifications'
+          component={NotificationScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+          }}
+        />
+        <Tab.Screen
+          name='Profile'
+          component={ProfileScreen}
+          options={{
+            title: '',
+            headerTransparent: true,
+          }}
+        />
+      </Tab.Navigator>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

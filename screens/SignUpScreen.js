@@ -60,6 +60,11 @@ export default function SignUpScreen() {
     }
   }
 
+  function switchAuth() {
+    dispatch(clearUserInputFields(''));
+    navigation.replace('Sign In');
+  }
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundTwo.jpeg')}
@@ -94,9 +99,7 @@ export default function SignUpScreen() {
         </View>
         <Text style={styles.switchText}>Already have an account?</Text>
         <View>
-          <SecondaryButton onPress={() => navigation.replace('Sign In')}>
-            Login
-          </SecondaryButton>
+          <SecondaryButton onPress={switchAuth}>Login</SecondaryButton>
         </View>
       </View>
     </ImageBackground>

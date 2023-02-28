@@ -39,6 +39,11 @@ export default function LoginInScreen() {
     //* need validation to make sure the user exists in the database before rerouting - if no token and user tries to log in, throw alert
   }
 
+  function switchAuth() {
+    dispatch(clearUserInputFields(''));
+    navigation.replace('Sign Up');
+  }
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundTwo.jpeg')}
@@ -63,9 +68,7 @@ export default function LoginInScreen() {
         </View>
         <Text style={styles.switchText}>New to Ciao?</Text>
         <View>
-          <SecondaryButton onPress={() => navigation.replace('Sign Up')}>
-            Sign up!
-          </SecondaryButton>
+          <SecondaryButton onPress={switchAuth}>Sign up!</SecondaryButton>
         </View>
       </View>
     </ImageBackground>

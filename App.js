@@ -5,13 +5,8 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from './components/Auth/Services/client';
 import { logoutAuthenticatedUser } from './redux/authSlice';
 import { store } from './redux/store';
-
-import {
-  HomeScreen,
-  LandingScreen,
-  LoginInScreen,
-  SignUpScreen,
-} from './screens';
+import HomeScreen from './screens/HomeScreen';
+import { LandingScreen, LoginInScreen, SignUpScreen } from './screens';
 
 const Stack = createNativeStackNavigator();
 

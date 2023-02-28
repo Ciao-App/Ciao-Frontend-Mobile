@@ -1,18 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import FeedPostTile from '../components/FeedPostTile';
 
 export default function FeedScreen() {
   return (
     <View style={styles.rootContainer}>
-      <Text>User Feed</Text>
+      <ScrollView>
+        <FeedPostTile />
+        <FeedPostTile />
+        <FeedPostTile />
+        <FeedPostTile />
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   rootContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 });

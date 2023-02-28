@@ -4,11 +4,12 @@ export const posts = [
     userId: 11,
     name: 'Asoka',
     description: 'Assimilated stable synergy',
-    rating: '1',
+    rating: '⭐',
     city: 'Komsomolets',
     state: 'Texas',
     address: '2132 Mifflin Hill',
-    pictures: 'http://dummyimage.com/222x100.png/dddddd/000000',
+    pictures:
+      'https://cdn.pixabay.com/photo/2018/07/16/16/08/island-3542290_960_720.jpg',
     createdAt: '2023-01-15 13:16:28',
   },
   {
@@ -16,11 +17,12 @@ export const posts = [
     userId: 11,
     name: 'Span',
     description: 'Persevering methodical website',
-    rating: '2',
+    rating: '⭐⭐',
     city: 'Madalum',
     state: 'Texas',
     address: '6069 Grayhawk Avenue',
-    pictures: 'http://dummyimage.com/118x100.png/cc0000/ffffff',
+    pictures:
+      'https://cdn.pixabay.com/photo/2018/10/19/12/14/train-3758523_960_720.jpg',
     createdAt: '2022-07-30 00:09:49',
   },
   {
@@ -28,11 +30,12 @@ export const posts = [
     userId: 11,
     name: 'Quo Lux',
     description: 'Networked context-sensitive projection',
-    rating: '3',
+    rating: '⭐⭐⭐',
     city: 'Chơn Thành',
     state: 'Texas',
     address: '2 Kingsford Place',
-    pictures: 'http://dummyimage.com/112x100.png/dddddd/000000',
+    pictures:
+      'https://cdn.pixabay.com/photo/2017/01/28/02/24/japan-2014619_960_720.jpg',
     createdAt: '2022-09-12 14:56:24',
   },
   {
@@ -40,11 +43,12 @@ export const posts = [
     userId: 11,
     name: 'Temp',
     description: 'Realigned interactive process improvement',
-    rating: '4',
+    rating: '⭐⭐⭐',
     city: 'Julayjilah',
     state: 'Texas',
     address: '0999 Anderson Trail',
-    pictures: 'http://dummyimage.com/172x100.png/dddddd/000000',
+    pictures:
+      'https://cdn.pixabay.com/photo/2014/09/21/17/56/mountaineering-455338_960_720.jpg',
     createdAt: '2022-09-17 23:50:04',
   },
   {
@@ -52,11 +56,12 @@ export const posts = [
     userId: 11,
     name: 'Daltfresh',
     description: 'Proactive analyzing migration',
-    rating: '5',
+    rating: '⭐⭐⭐⭐⭐',
     city: 'La Cruz',
     state: 'Texas',
     address: '41 Mitchell Avenue',
-    pictures: 'http://dummyimage.com/168x100.png/5fa2dd/ffffff',
+    pictures:
+      'https://cdn.pixabay.com/photo/2016/11/30/15/00/lighthouse-1872998_960_720.jpg',
     createdAt: '2022-12-13 06:25:00',
   },
   {
@@ -64,11 +69,12 @@ export const posts = [
     userId: 11,
     name: 'Tempsoft',
     description: 'Organized responsive benchmark',
-    rating: '5',
+    rating: '⭐⭐⭐',
     city: 'Canavieiras',
     state: 'Texas',
     address: '634 Barnett Road',
-    pictures: 'http://dummyimage.com/164x100.png/5fa2dd/ffffff',
+    pictures:
+      'https://cdn.pixabay.com/photo/2018/01/21/01/46/architecture-3095716_960_720.jpg',
     createdAt: '2022-12-29 22:48:29',
   },
   {
@@ -76,11 +82,12 @@ export const posts = [
     userId: 11,
     name: 'Alphazap',
     description: 'Operative impactful neural-net',
-    rating: '4',
+    rating: '⭐⭐⭐⭐',
     city: 'Tupã',
     state: 'Texas',
     address: '460 Johnson Parkway',
-    pictures: 'http://dummyimage.com/229x100.png/cc0000/ffffff',
+    pictures:
+      'https://cdn.pixabay.com/photo/2012/11/28/10/34/rocket-launch-67643_960_720.jpg',
     createdAt: '2022-08-12 19:17:43',
   },
   {
@@ -88,11 +95,12 @@ export const posts = [
     userId: 11,
     name: 'Asoka',
     description: 'Grass-roots clear-thinking hierarchy',
-    rating: '3',
+    rating: '⭐⭐⭐',
     city: 'Changbu',
     state: 'Texas',
     address: '221 Boyd Street',
-    pictures: 'http://dummyimage.com/184x100.png/ff4444/ffffff',
+    pictures:
+      'https://cdn.pixabay.com/photo/2017/12/01/03/17/nature-2990060_960_720.jpg',
     createdAt: '2022-08-11 15:51:22',
   },
   {
@@ -100,11 +108,12 @@ export const posts = [
     userId: 11,
     name: 'Rank',
     description: 'Mandatory coherent structure',
-    rating: '2',
+    rating: '⭐',
     city: 'Pershotravneve',
     state: 'Texas',
     address: '97351 Hayes Court',
-    pictures: 'http://dummyimage.com/179x100.png/dddddd/000000',
+    pictures:
+      'https://cdn.pixabay.com/photo/2017/08/03/21/48/drinks-2578446_960_720.jpg',
     createdAt: '2022-06-24 16:08:40',
   },
   {
@@ -112,11 +121,12 @@ export const posts = [
     userId: 11,
     name: 'Stim',
     description: 'Advanced client-server portal',
-    rating: '1',
+    rating: '⭐⭐⭐',
     city: 'Sukamaju',
     state: 'Texas',
     address: '2 Blaine Road',
-    pictures: 'http://dummyimage.com/246x100.png/dddddd/000000',
+    pictures:
+      'https://cdn.pixabay.com/photo/2017/07/31/11/22/man-2557408_960_720.jpg',
     createdAt: '2022-12-11 16:03:42',
   },
 ];

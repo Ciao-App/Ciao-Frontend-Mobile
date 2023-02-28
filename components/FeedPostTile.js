@@ -1,37 +1,41 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import Colors from '../utils/Colors';
 
-export default function FeedPostTile() {
+export default function FeedPostTile({
+  name,
+  description,
+  rating,
+  city,
+  state,
+  pictures,
+}) {
+  const image = { uri: `${pictures}` };
   return (
-    <View style={styles.postContainer}>
+    <View>
       <View style={styles.postHeader}>
         <Text style={styles.headerText}>Username</Text>
-        <Text>⭐</Text>
+        <Text>❤️</Text>
       </View>
-      <View style={styles.postBody}>
-        <Text style={styles.bodyText}>Name</Text>
-        <Text style={styles.bodyText}>Location</Text>
-        <Text style={styles.bodyText}>Rating</Text>
-      </View>
-      <View style={styles.postFooter}>
-        <Text>
-          Description: This is where the description of the post will go where
-          the user can describe their recommendation, what they liked about the
-          place, what they disliked as well as any sort of tips and tricks to
-          know about that you wouldn't normally find online
+      <ImageBackground
+        source={image}
+        style={styles.postBody}
+        resizeMode='cover'
+      >
+        <Text style={styles.bodyText}>{name}</Text>
+        <Text style={styles.bodyText}>
+          {city},{state}
         </Text>
+        <Text style={styles.rating}>{rating}</Text>
+      </ImageBackground>
+      <View style={styles.postFooter}>
+        <Text>Description: {description}</Text>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  postContainer: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
   postHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -47,7 +51,6 @@ const styles = StyleSheet.create({
     paddingTop: 130,
     height: 250,
     width: '100%',
-    backgroundColor: 'slategrey',
   },
   postFooter: {
     padding: 10,
@@ -59,9 +62,14 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontSize: 15,
+    fontWeight: 'bold',
     paddingHorizontal: 10,
     paddingVertical: 3,
     margin: 1,
     backgroundColor: 'rgba(221,221,221, 0.5)',
+  },
+  rating: {
+    fontSize: 16,
+    padding: 4,
   },
 });

@@ -1,7 +1,7 @@
 export const posts = [
   {
     id: 1,
-    userId: 11,
+    userId: 1,
     name: 'Asoka',
     description: 'Assimilated stable synergy',
     rating: '⭐',
@@ -14,7 +14,7 @@ export const posts = [
   },
   {
     id: 2,
-    userId: 11,
+    userId: 1,
     name: 'Span',
     description: 'Persevering methodical website',
     rating: '⭐⭐',
@@ -27,7 +27,7 @@ export const posts = [
   },
   {
     id: 3,
-    userId: 11,
+    userId: 1,
     name: 'Quo Lux',
     description: 'Networked context-sensitive projection',
     rating: '⭐⭐⭐',
@@ -40,7 +40,7 @@ export const posts = [
   },
   {
     id: 4,
-    userId: 11,
+    userId: 1,
     name: 'Temp',
     description: 'Realigned interactive process improvement',
     rating: '⭐⭐⭐',
@@ -53,7 +53,7 @@ export const posts = [
   },
   {
     id: 5,
-    userId: 11,
+    userId: 1,
     name: 'Daltfresh',
     description: 'Proactive analyzing migration',
     rating: '⭐⭐⭐⭐⭐',
@@ -66,7 +66,7 @@ export const posts = [
   },
   {
     id: 6,
-    userId: 11,
+    userId: 2,
     name: 'Tempsoft',
     description: 'Organized responsive benchmark',
     rating: '⭐⭐⭐',
@@ -79,7 +79,7 @@ export const posts = [
   },
   {
     id: 7,
-    userId: 11,
+    userId: 2,
     name: 'Alphazap',
     description: 'Operative impactful neural-net',
     rating: '⭐⭐⭐⭐',
@@ -92,7 +92,7 @@ export const posts = [
   },
   {
     id: 8,
-    userId: 11,
+    userId: 2,
     name: 'Asoka',
     description: 'Grass-roots clear-thinking hierarchy',
     rating: '⭐⭐⭐',
@@ -105,7 +105,7 @@ export const posts = [
   },
   {
     id: 9,
-    userId: 11,
+    userId: 2,
     name: 'Rank',
     description: 'Mandatory coherent structure',
     rating: '⭐',
@@ -118,7 +118,7 @@ export const posts = [
   },
   {
     id: 10,
-    userId: 11,
+    userId: 2,
     name: 'Stim',
     description: 'Advanced client-server portal',
     rating: '⭐⭐⭐',

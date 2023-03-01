@@ -55,6 +55,8 @@ function AuthenticatedStack() {
         component={HomeScreen}
         options={() => ({
           headerLeft: () => <Button title='logout' onPress={logout} />,
+          headerTransparent: true,
+          title: '',
         })}
       />
     </Stack.Navigator>

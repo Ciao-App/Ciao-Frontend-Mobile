@@ -1,21 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
+import { useSelector } from 'react-redux';
 import Colors from '../utils/Colors';
+import { stockBackgroundImage, stockProfilePicture } from '../utils/Defaults';
 
 export default function ProfileScreen() {
+  const { email, firstName, lastName } = useSelector(
+    (state) => state.auth.user
+  );
+
   return (
     <View style={styles.rootContainer}>
-      <View style={styles.profileHeader}>
+      <ImageBackground
+        style={styles.profileHeader}
+        source={{ uri: stockBackgroundImage }}
+      >
         <View style={styles.profilePictureContainer}>
-          <View style={styles.profilePicture}>
-            <Text>Picture</Text>
-          </View>
+          <ImageBackground
+            style={styles.profilePicture}
+            source={{ uri: stockProfilePicture }}
+            resizeMode='cover'
+          ></ImageBackground>
         </View>
-      </View>
+      </ImageBackground>
       <View style={styles.accountInfo}>
         <View>
-          <Text style={styles.accountText}>Full Name</Text>
-          <Text style={styles.accountText}>@handle</Text>
+          <Text style={styles.accountText}>
+            {firstName} {lastName}
+          </Text>
+          <Text style={styles.accountText}>{email}</Text>
         </View>
         <View>
           <Text style={styles.accountText}>Friends List</Text>
@@ -40,8 +59,6 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   profileHeader: {
     width: '100%',
@@ -52,18 +69,19 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary300,
   },
   profilePictureContainer: {
-    paddingTop: 125,
-  },
-  profilePicture: {
-    borderRadius: 100,
+    marginTop: '28%',
+    borderRadius: 150 / 2,
     width: 150,
     height: 150,
     borderWidth: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
-    overflow: 'visible',
-    backgroundColor: 'pink',
+    overflow: 'hidden',
+  },
+  profilePicture: {
+    width: '100%',
+    height: '100%',
   },
   accountInfo: {
     flexDirection: 'row',

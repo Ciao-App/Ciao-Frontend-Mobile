@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,14 +6,40 @@ import {
   ImageBackground,
   FlatList,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import { getCurrentUserPosts } from '../components/Auth/Services/client';
+import ProfilePostTile from '../components/ProfilePostTile';
+import { useDispatch, useSelector } from 'react-redux';
 import Colors from '../utils/Colors';
 import { stockBackgroundImage, stockProfilePicture } from '../utils/Defaults';
+import { setUserPosts } from '../redux/postSlice';
 
 export default function ProfileScreen() {
+  const dispatch = useDispatch();
   const { email, firstName, lastName, id } = useSelector(
     (state) => state.auth.user
   );
+  const { posts } = useSelector((state) => state.post);
+
+  useEffect(() => {
+    async function getUserPosts() {
+      try {
+        dispatch(setUserPosts(await getCurrentUserPosts(id)));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getUserPosts();
+  }, []);
+  console.log('redux posts:', posts);
+
+  function renderPost(itemData) {
+    const item = itemData.item;
+    const postProps = {
+      city: item.city,
+      pictures: item.pictures,
+    };
+    return <ProfilePostTile {...postProps} />;
+  }
 
   return (
     <View style={styles.rootContainer}>
@@ -44,15 +70,12 @@ export default function ProfileScreen() {
         <Text style={styles.contentHeader}>Recommendations!</Text>
       </View>
       <View style={styles.accountContent}>
-        {/* Change to a flatlist with reuseable post component */}
-        {/* <ScrollView style={styles.postContainer}>
-
-        </ScrollView> */}
-        {/* <FlatList
-          data={renderPost}
+        <FlatList
+          data={posts}
           keyExtractor={(post) => post.id}
           renderItem={renderPost}
-        /> */}
+          numColumns={3}
+        />
       </View>
     </View>
   );
@@ -107,7 +130,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
   },
-  postContainer: {
-    height: '100%',
-  },
+  accountContent: {},
 });

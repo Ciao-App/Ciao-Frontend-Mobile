@@ -3,15 +3,15 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   ImageBackground,
+  FlatList,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import Colors from '../utils/Colors';
 import { stockBackgroundImage, stockProfilePicture } from '../utils/Defaults';
 
 export default function ProfileScreen() {
-  const { email, firstName, lastName } = useSelector(
+  const { email, firstName, lastName, id } = useSelector(
     (state) => state.auth.user
   );
 
@@ -45,12 +45,14 @@ export default function ProfileScreen() {
       </View>
       <View style={styles.accountContent}>
         {/* Change to a flatlist with reuseable post component */}
-        <ScrollView style={styles.postContainer}>
-          <Text>Post</Text>
-          <Text>Post</Text>
-          <Text>Post</Text>
-          <Text>Post</Text>
-        </ScrollView>
+        {/* <ScrollView style={styles.postContainer}>
+
+        </ScrollView> */}
+        {/* <FlatList
+          data={renderPost}
+          keyExtractor={(post) => post.id}
+          renderItem={renderPost}
+        /> */}
       </View>
     </View>
   );

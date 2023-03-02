@@ -66,10 +66,7 @@ export default function ProfileScreen() {
           <Text style={styles.accountText}>Friends List</Text>
         </View>
       </View>
-      <View style={styles.contentHeaderContainer}>
-        <Text style={styles.contentHeader}>Recommendations!</Text>
-      </View>
-      <View style={styles.accountContent}>
+      <View style={styles.postsContainer}>
         <FlatList
           data={posts}
           keyExtractor={(post) => post.id}
@@ -112,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 26,
-    paddingVertical: 20,
+    paddingVertical: 30,
   },
   accountText: {
     fontSize: 16,
@@ -125,10 +122,9 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.primary400,
     borderBottomWidth: 1,
   },
-  contentHeader: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    alignSelf: 'center',
+  postsContainer: {
+    flex: 1,
+    maxWidth: '100%',
+    height: '100%',
   },
-  accountContent: {},
 });

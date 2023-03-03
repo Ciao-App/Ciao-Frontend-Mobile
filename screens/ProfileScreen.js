@@ -30,7 +30,6 @@ export default function ProfileScreen() {
     }
     getUserPosts();
   }, []);
-  console.log('redux posts:', posts);
 
   function renderPost(itemData) {
     const item = itemData.item;

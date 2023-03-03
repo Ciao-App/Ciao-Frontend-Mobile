@@ -24,7 +24,7 @@ export default function HomeScreen() {
             headerTransparent: true,
             tabBarIcon: () => (
               <IconButton
-                icon='home'
+                icon='home-outline'
                 size={26}
                 color={Colors.primary600}
                 onPress={() => navigation.navigate('Feed')}
@@ -41,7 +41,7 @@ export default function HomeScreen() {
             headerTransparent: true,
             tabBarIcon: () => (
               <IconButton
-                icon='heart'
+                icon='heart-outline'
                 size={26}
                 color={Colors.primary600}
                 onPress={() => navigation.navigate('Favorites')}

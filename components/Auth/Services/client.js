@@ -57,3 +57,18 @@ export async function logoutUser() {
   });
   return response;
 }
+
+export async function getCurrentUserPosts(id) {
+  const url = `http://192.168.86.33:7890/api/v1/posts/user/${id}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(),
+  });
+  return response.json();
+}

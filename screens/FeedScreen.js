@@ -3,6 +3,7 @@ import { View, StyleSheet, FlatList, Text } from 'react-native';
 import FeedPostTile from '../components/FeedPostTile';
 import { posts } from '../utils/DummyData';
 import IconButton from '../components/ui/IconButton';
+import { useNavigation } from '@react-navigation/native';
 
 export default function FeedScreen() {
   function renderPost(itemData) {
@@ -23,9 +24,6 @@ export default function FeedScreen() {
       <View style={styles.rootContainer}>
         <View style={styles.header}>
           <Text style={styles.headerText}>CIAO!</Text>
-          <View>
-            <IconButton icon='add-circle-outline' size={30} />
-          </View>
         </View>
         <FlatList
           data={posts}
@@ -44,11 +42,10 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: 110,
+    justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 50,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: '36%',
   },
   headerText: {
     fontSize: 40,

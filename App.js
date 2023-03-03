@@ -6,7 +6,12 @@ import { logoutUser } from './components/Auth/Services/client';
 import { logoutAuthenticatedUser } from './redux/authSlice';
 import { store } from './redux/store';
 import HomeScreen from './screens/HomeScreen';
-import { LandingScreen, LoginInScreen, SignUpScreen } from './screens';
+import {
+  CreateScreen,
+  LandingScreen,
+  LoginInScreen,
+  SignUpScreen,
+} from './screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +60,20 @@ function AuthenticatedStack() {
         component={HomeScreen}
         options={() => ({
           headerLeft: () => <Button title='logout' onPress={logout} />,
+          headerTransparent: true,
+          title: '',
+        })}
+      />
+      <Stack.Screen
+        name='Create'
+        component={CreateScreen}
+        options={({ navigation }) => ({
+          headerLeft: () => (
+            <Button
+              title='Back'
+              onPress={() => navigation.navigate('Home Screen')}
+            />
+          ),
           headerTransparent: true,
           title: '',
         })}

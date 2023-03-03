@@ -6,6 +6,7 @@ import FavoritesScreen from './FavoritesScreen';
 import ExploreScreen from './ExploreScreen';
 import NotificationScreen from './NotificationScreen';
 import ProfileScreen from './ProfileScreen';
+import CreateScreen from './CreateScreen';
 
 export {
   LandingScreen,
@@ -16,4 +17,5 @@ export {
   ExploreScreen,
   NotificationScreen,
   ProfileScreen,
+  CreateScreen,
 };

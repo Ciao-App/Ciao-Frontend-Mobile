@@ -9,6 +9,7 @@ import {
   ProfileScreen,
 } from './index';
 import Colors from '../utils/Colors';
+import { StyleSheet, View } from 'react-native';
 
 export default function HomeScreen() {
   const Tab = createBottomTabNavigator();
@@ -24,7 +25,7 @@ export default function HomeScreen() {
             headerTransparent: true,
             tabBarIcon: () => (
               <IconButton
-                icon='home-outline'
+                icon='home'
                 size={26}
                 color={Colors.primary600}
                 onPress={() => navigation.navigate('Feed')}
@@ -41,7 +42,7 @@ export default function HomeScreen() {
             headerTransparent: true,
             tabBarIcon: () => (
               <IconButton
-                icon='heart-outline'
+                icon='heart'
                 size={26}
                 color={Colors.primary600}
                 onPress={() => navigation.navigate('Favorites')}
@@ -57,12 +58,20 @@ export default function HomeScreen() {
             title: '',
             headerTransparent: true,
             tabBarIcon: () => (
-              <IconButton
-                icon='search-outline'
-                size={26}
-                color={Colors.primary600}
-                onPress={() => navigation.navigate('Explore')}
-              />
+              <View style={styles.duoIcon}>
+                <IconButton
+                  icon='search'
+                  size={26}
+                  color={Colors.primary600}
+                  onPress={() => navigation.navigate('Explore')}
+                />
+                <IconButton
+                  icon='add'
+                  size={26}
+                  color={Colors.primary600}
+                  onPress={() => navigation.navigate('Create')}
+                />
+              </View>
             ),
             tabBarShowLabel: false,
           })}
@@ -75,7 +84,7 @@ export default function HomeScreen() {
             headerTransparent: true,
             tabBarIcon: () => (
               <IconButton
-                icon='notifications-outline'
+                icon='notifications'
                 size={26}
                 color={Colors.primary600}
                 onPress={() => navigation.navigate('Notifications')}
@@ -92,7 +101,7 @@ export default function HomeScreen() {
             headerTransparent: true,
             tabBarIcon: () => (
               <IconButton
-                icon='person-outline'
+                icon='person'
                 size={26}
                 color={Colors.primary600}
                 onPress={() => navigation.navigate('Profile')}
@@ -105,3 +114,12 @@ export default function HomeScreen() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  duoIcon: {
+    flexDirection: 'row',
+    backgroundColor: Colors.primary300,
+    borderRadius: 40,
+    height: 60,
+  },
+});

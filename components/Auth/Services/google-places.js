@@ -4,6 +4,7 @@ import Colors from '../../../utils/Colors';
 
 export default function GooglePlacesInput() {
   //   console.log(GOOGLE_API_KEY);
+
   return (
     <GooglePlacesAutocomplete
       query={{ key: `${GOOGLE_API_KEY}` }}
@@ -20,7 +21,7 @@ export default function GooglePlacesInput() {
           marginHorizontal: 5,
         },
       }}
-      placeholder='Search'
+      placeholder='Search Location'
       fetchDetails={true}
       onPress={(data, details = null) => console.log('data:', data)}
     />

@@ -8,6 +8,7 @@ function Input({
   value,
   isInvalid,
   onChangeText,
+  placeholder,
 }) {
   return (
     <View style={styles.inputContainer}>
@@ -21,6 +22,7 @@ function Input({
         secureTextEntry={secure}
         value={value}
         onChangeText={onChangeText}
+        placeholder={placeholder}
       />
     </View>
   );

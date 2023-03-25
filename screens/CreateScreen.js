@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TextInput } from 'react-native';
-import GooglePlacesInput from '../components/Auth/Services/google-places';
+import PostInput from '../components/ui/PostInput';
 import Colors from '../utils/Colors';
 
 export default function CreateScreen() {
@@ -9,9 +9,12 @@ export default function CreateScreen() {
       <View style={styles.header}>
         <Text style={styles.headerText}>Add Recommendation!</Text>
       </View>
-      <TextInput placeholder='Search Places' style={styles.creationSearch} />
-      {/* <TextInput placeholder='Current Location' style={styles.creationSearch} /> */}
-      <GooglePlacesInput />
+      <View>
+        <View style={styles.formContainer}>
+          <PostInput placeholder='Name' style={styles.input} />
+          <PostInput placeholder='Name' style={styles.input} />
+        </View>
+      </View>
     </View>
   );
 }
@@ -32,12 +35,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  creationSearch: {
-    height: 40,
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: 'red',
+    justifyContent: 'space-evenly',
+    padding: 2,
+  },
+  input: {
     backgroundColor: Colors.primary200,
     borderRadius: 50,
+    height: 40,
     padding: 10,
-    marginHorizontal: 5,
-    marginVertical: 3,
+    width: '50%',
   },
 });

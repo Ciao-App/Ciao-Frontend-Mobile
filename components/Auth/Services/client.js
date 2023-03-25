@@ -1,5 +1,7 @@
+const LOCAL_URL = 'http://192.168.86.36:7890';
+
 export async function signUpUser(userData) {
-  const url = 'http://192.168.86.33:7890/api/v1/users';
+  const url = `${LOCAL_URL}/api/v1/users`;
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',
@@ -16,7 +18,7 @@ export async function signUpUser(userData) {
 //* Fix: Instead of local host, plugged in computer's IP address - theory is Backend isn't deployed
 
 export async function signInUser(userData) {
-  const url = 'http://192.168.86.33:7890/api/v1/users/sessions';
+  const url = `${LOCAL_URL}/api/v1/users/sessions`;
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',
@@ -35,7 +37,7 @@ export async function signInUser(userData) {
 
 // fetch to validate a user in fact was getting logged in
 export async function getUser() {
-  const url = 'http://192.168.86.33:7890/api/v1/users/me';
+  const url = `${LOCAL_URL}/api/v1/users/me`;
   const response = await fetch(url, {
     method: 'GET',
     mode: 'cors',
@@ -50,7 +52,7 @@ export async function getUser() {
 }
 
 export async function logoutUser() {
-  const url = 'http://192.168.86.33:7890/api/v1/users/sessions';
+  const url = `${LOCAL_URL}/api/v1/users/sessions`;
   const response = await fetch(url, {
     method: 'DELETE',
     credentials: 'include',
@@ -59,7 +61,7 @@ export async function logoutUser() {
 }
 
 export async function getCurrentUserPosts(id) {
-  const url = `http://192.168.86.33:7890/api/v1/posts/user/${id}`;
+  const url = `${LOCAL_URL}/api/v1/posts/user/${id}`;
   const response = await fetch(url, {
     method: 'GET',
     mode: 'cors',
